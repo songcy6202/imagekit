@@ -2,6 +2,8 @@ package imagekit
 
 import(
 	"github.com/docker/distribution"
+	"github.com/docker/distribution/reference"
+	"github.com/docker/docker/image"
 )
 
 
@@ -14,7 +16,7 @@ type ImageKit interface {
 
 // Packer pack layers to generate a legal docker image
 type Packer interface {
-	Pack()
+	Pack(name string, tag string, imageMeta image.Image, layers []distribution.Descriptor) (distribution.Manifest, error)
 }
 
 // DockerImage Descripter
